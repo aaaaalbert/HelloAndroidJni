@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
-    private float mLastX, mLastY, mLastZ;
+    private static float mLastX, mLastY, mLastZ;
     private boolean mInitialized;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         float y = event.values[1];
         float z = event.values[2];
         mLastX = x;
-        ((TextView) findViewById(R.id.jni_msgView)).setText(getMsgFromJni());
+        Log.d("MEEEE", String.valueOf(System.currentTimeMillis()) + " " + getMsgFromJni());
     }
 
     @Override
@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public static float getAccelValue() {
-        return 0.64982f;
+        Log.d("MEEEE222222", String.valueOf(System.currentTimeMillis()));
+        return mLastX;
     }
 
 
