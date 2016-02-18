@@ -21,6 +21,10 @@ model {
     }
     android.ndk {
         moduleName = "hello-android-jni"
+        // Life-saving^WHelpful hints to get `log.h` included:
+        // http://stackoverflow.com/questions/20744578/ndk-includes-and-the-android-gradle-plugin-version-0-7
+        // http://tools.android.com/tech-docs/new-build-system/gradle-experimental
+        ldLibs.add("log")
     }
 }
 
