@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <stdio.h>
 #include <android/log.h>
+#include <Python.h>
 
 # define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, __FILE__, __VA_ARGS__))
 
@@ -12,6 +13,8 @@ Java_com_example_aaaaa_helloandroidjni_MainActivity_getMsgFromJni(JNIEnv *env,
     jmethodID accelgetter;
     float anacceleration;
     char floatinstring[16];
+
+    Py_Initialize();
 
     main_activity_class = (*env)->FindClass(env,
             "com/example/aaaaa/helloandroidjni/MainActivity");
