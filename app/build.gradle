@@ -20,12 +20,22 @@ model {
         }
     }
 
-    // This time via https://sites.google.com/a/android.com/tools/tech-docs/new-build-system/gradle-experimental#TOC-NDK-Dependencies
+    /* This time via https://sites.google.com/a/android.com/tools/tech-docs/new-build-system/gradle-experimental#TOC-NDK-Dependencies
+     * Specifically referring to this Gradle example that demonstrates
+     * a *different* syntax than what the Google guide suggests:
+     * https://github.com/gradle/gradle/blob/master/subprojects/docs/src/samples/native-binaries/prebuilt/build.gradle)
+     */
     repositories {
         libs(PrebuiltLibraries) {
-            binaries.withType(SharedLibraryBinary) {
-                sharedLibraryFile = file("libs/libpython2.7.so")
-                sharedLibraryFile = file("libs/libhello-android-jni.so")
+            python27 {
+                binaries.withType(SharedLibraryBinary) {
+                    sharedLibraryFile = file("jniLibs/libpython2.7.so")
+                }
+            }
+            helloandroidjni {
+                binaries.withType(SharedLibraryBinary) {
+                    sharedLibraryFile = file("jniLibs/libhello-android-jni.so")
+                }
             }
         }
     }
@@ -33,8 +43,8 @@ model {
         main {
             jniLibs {
                 dependencies {
-                    library "python2.7"
-                    library "hello-android-jni"
+                    library "python27"
+                    library "helloandroidjni"
                 }
             }
         }

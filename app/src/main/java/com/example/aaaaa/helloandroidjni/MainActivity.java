@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     static {
+        System.loadLibrary("python2.7");
         System.loadLibrary("hello-android-jni");
     }
     public native String getMsgFromJni();
