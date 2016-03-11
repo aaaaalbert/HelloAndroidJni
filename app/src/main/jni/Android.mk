@@ -28,7 +28,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := python2.7
 LOCAL_SRC_FILES := /home/aaaaa/python-for-android/python-build/python/obj/local/armeabi/libpython2.7.so
 # This is where the header files declaring the module's functions live:
-LOCAL_EXPORT_C_INCLUDES := /home/aaaaa/python-for-android/python-build/python_arm/python-lib/python/include/python2.7
+LOCAL_EXPORT_C_INCLUDES := /home/aaaaa/python-for-android/python-build/python_arm/python-lib/python/include/
 
 include $(PREBUILT_SHARED_LIBRARY)
 

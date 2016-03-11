@@ -1,9 +1,20 @@
+#include <python2.7/Python.h>
 #include <jni.h>
 #include <stdio.h>
 #include <android/log.h>
-#include <Python.h>
 
 # define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, __FILE__, __VA_ARGS__))
+
+/*
+ * This function should be called when the Java code does
+ * `System.loadLibrary()`.
+ * See https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/invocation.html#JNI_OnLoad
+*/
+jint JNI_OnLoad(JavaVM *vm, void *reserved) {
+    LOGI("Look Ma and Pa, I'm writing to the Android log!");
+    return JNI_VERSION_1_6;
+}
+
 
 JNIEXPORT jstring JNICALL
 Java_com_example_aaaaa_helloandroidjni_MainActivity_getMsgFromJni(JNIEnv *env,
@@ -14,7 +25,11 @@ Java_com_example_aaaaa_helloandroidjni_MainActivity_getMsgFromJni(JNIEnv *env,
     float anacceleration;
     char floatinstring[16];
 
+    LOGI("Before Py_Initialize");
+
     Py_Initialize();
+
+    LOGI("After Py_Initialize");
 
     main_activity_class = (*env)->FindClass(env,
             "com/example/aaaaa/helloandroidjni/MainActivity");
