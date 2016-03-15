@@ -1,6 +1,6 @@
-#include <python2.7/Python.h>
 #include <jni.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <android/log.h>
 
 # define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, __FILE__, __VA_ARGS__))
@@ -24,12 +24,11 @@ Java_com_example_aaaaa_helloandroidjni_MainActivity_getMsgFromJni(JNIEnv *env,
     jmethodID accelgetter;
     float anacceleration;
     char floatinstring[16];
+    size_t size = 256;
+    char current_working_dir[size];
 
-    LOGI("Before Py_Initialize");
+    LOGI("Blix Blypsilon %s", getcwd(current_working_dir, size));
 
-    Py_Initialize();
-
-    LOGI("After Py_Initialize");
 
     main_activity_class = (*env)->FindClass(env,
             "com/example/aaaaa/helloandroidjni/MainActivity");

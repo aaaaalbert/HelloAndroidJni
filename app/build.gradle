@@ -29,7 +29,7 @@ model {
         libs(PrebuiltLibraries) {
             python27 {
                 binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("jniLibs/libpython2.7.so")
+                    //sharedLibraryFile = file("jniLibs/libpython2.7.so")
                 }
             }
             helloandroidjni {
@@ -43,7 +43,7 @@ model {
         main {
             jniLibs {
                 dependencies {
-                    library "python27"
+                    //library "python27"
                     library "helloandroidjni"
                 }
             }

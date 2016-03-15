@@ -17,29 +17,14 @@
 
 LOCAL_PATH := $(call my-dir)
 
-
-
-# Include `libpython2.7.so` as a prebuilt module.
-# We will later use the LOCAL_MODULE name to refer to it as a shared lib.
-#
-# (See file:///home/aaaaa/devel/android-ndk-r10d/docs/Programmers_Guide/html/md_3__key__topics__libraries__p_r_e_b_u_i_l_t_s.html )
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := python2.7
-LOCAL_SRC_FILES := /home/aaaaa/python-for-android/python-build/python/obj/local/armeabi/libpython2.7.so
-# This is where the header files declaring the module's functions live:
-LOCAL_EXPORT_C_INCLUDES := /home/aaaaa/python-for-android/python-build/python_arm/python-lib/python/include/
-
-include $(PREBUILT_SHARED_LIBRARY)
-
-
+# XXX No Python now!
 
 # Build our module
 include $(CLEAR_VARS)
 
 # LOCAL_C_INCLUDES are automatically set up through LOCAL_EXPORT_C_INCLUDES 
 # above, and our `#include`ing Python.h.
-LOCAL_SHARED_LIBRARIES := python2.7
+LOCAL_SHARD_LIBRARIES := unistd
 LOCAL_LDLIBS    := -llog
 LOCAL_MODULE    := hello-android-jni
 LOCAL_SRC_FILES := hello-android-jni.c
